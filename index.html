@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Essa Nihongo</title>
+<meta name="description" content="Japanese flashcards for Essa: hiragana, words and phrases from class.">
+<meta name="theme-color" content="#FFF6E5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Essa Nihongo">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="home" class="view" aria-label="Decks">
+  <h1 class="title">Essa Nihongo</h1>
+  <p class="subtitle" lang="ja">にほんご カード 🌸</p>
+  <div id="deck-list"><p class="loading">Loading…</p></div>
+</main>
+
+<section id="study" class="view" hidden aria-label="Flashcards">
+  <header class="topbar">
+    <button id="back-btn" class="round-btn" type="button" aria-label="Back to decks">⬅</button>
+    <div class="title-box">
+      <div id="deck-title" class="deck-title"></div>
+      <div id="counter" class="counter" aria-live="polite"></div>
+    </div>
+    <button id="shuffle-btn" class="round-btn" type="button" aria-label="Shuffle">🔀</button>
+  </header>
+
+  <div class="card-wrap">
+    <div id="card" class="card" role="button" tabindex="0"
+         aria-label="Flashcard. Tap to flip, swipe for the next card.">
+      <div id="front" class="face front">
+        <div id="front-letter" class="front-letter" lang="ja"></div>
+        <div id="front-emoji" class="front-emoji" aria-hidden="true"></div>
+        <div id="front-word" class="front-word" lang="ja"></div>
+        <div class="hint">tap to flip 👆</div>
+      </div>
+      <div id="back" class="face back" hidden>
+        <div id="back-japanese" class="back-japanese" lang="ja"></div>
+        <div id="back-romaji" class="back-romaji"></div>
+        <div id="back-english" class="back-english"></div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="controls">
+    <button id="prev-btn" class="big-btn" type="button" aria-label="Previous card">◀</button>
+    <button id="speak-btn" class="big-btn speak" type="button" aria-label="Say it">🔊</button>
+    <button id="next-btn" class="big-btn" type="button" aria-label="Next card">▶</button>
+  </nav>
+</section>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
