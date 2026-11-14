@@ -23,7 +23,7 @@
   },
   {
    "id": 3,
-   "emoji": "🍚",
+   "emoji": "🙏🍚",
    "japanese": "いただきます",
    "romaji": "itadakimasu",
    "english": "Thank you for the food (before eating)"
@@ -93,14 +93,14 @@
   },
   {
    "id": 13,
-   "emoji": "⭕",
+   "emoji": "👍",
    "japanese": "はい",
    "romaji": "hai",
    "english": "yes"
   },
   {
    "id": 14,
-   "emoji": "❌",
+   "emoji": "👎",
    "japanese": "いいえ",
    "romaji": "iie",
    "english": "no"
@@ -213,14 +213,14 @@
   },
   {
    "id": 29,
-   "emoji": "🧍",
+   "emoji": "🧍⬆️",
    "japanese": "たって",
    "romaji": "tatte",
    "english": "stand up"
   },
   {
    "id": 30,
-   "emoji": "🪑",
+   "emoji": "🪑⬇️",
    "japanese": "すわって",
    "romaji": "suwatte",
    "english": "sit down"
@@ -248,28 +248,28 @@
   },
   {
    "id": 34,
-   "emoji": "⬆️",
+   "emoji": "➡️🚗",
    "japanese": "まえ",
    "romaji": "mae",
    "english": "front"
   },
   {
    "id": 35,
-   "emoji": "⬇️",
+   "emoji": "🚗⬅️",
    "japanese": "うしろ",
    "romaji": "ushiro",
-   "english": "back"
+   "english": "back, behind"
   },
   {
    "id": 36,
-   "emoji": "👈",
+   "emoji": "➡️🏠",
    "japanese": "きて",
    "romaji": "kite",
    "english": "come"
   },
   {
    "id": 37,
-   "emoji": "👉",
+   "emoji": "🏠➡️",
    "japanese": "いって",
    "romaji": "itte",
    "english": "go"
@@ -311,7 +311,7 @@
   },
   {
    "id": 43,
-   "emoji": "🔤",
+   "emoji": "🇺🇸🔤",
    "japanese": "えいご",
    "romaji": "eigo",
    "english": "English"
@@ -352,7 +352,7 @@
   },
   {
    "id": 48,
-   "emoji": "⚪",
+   "emoji": "⭕",
    "japanese": "まる",
    "romaji": "maru",
    "english": "circle"
@@ -373,10 +373,11 @@
   },
   {
    "id": 51,
-   "emoji": "▬",
+   "emoji": "",
    "japanese": "ながしかく",
    "romaji": "nagashikaku",
-   "english": "rectangle"
+   "english": "rectangle",
+   "image": "rectangle.png"
   },
   {
    "id": 52,
@@ -457,10 +458,11 @@
   },
   {
    "id": 63,
-   "emoji": "🍊",
+   "emoji": "",
    "japanese": "かき",
    "romaji": "kaki",
-   "english": "persimmon"
+   "english": "persimmon",
+   "image": "persimmon.png"
   },
   {
    "id": 64,
@@ -492,10 +494,11 @@
   },
   {
    "id": 68,
-   "emoji": "🌰",
+   "emoji": "",
    "japanese": "どんぐり",
    "romaji": "donguri",
-   "english": "acorn"
+   "english": "acorn",
+   "image": "acorn.png"
   },
   {
    "id": 69,
@@ -529,28 +532,28 @@
   },
   {
    "id": 73,
-   "emoji": "🐍",
+   "emoji": "📏🐍",
    "japanese": "ながい",
    "romaji": "nagai",
    "english": "long"
   },
   {
    "id": 74,
-   "emoji": "🐛",
+   "emoji": "📏➡️⬅️",
    "japanese": "みじかい",
    "romaji": "mijikai",
    "english": "short"
   },
   {
    "id": 75,
-   "emoji": "🦒",
+   "emoji": "🦒⬆️",
    "japanese": "たかい",
    "romaji": "takai",
    "english": "tall, high"
   },
   {
    "id": 76,
-   "emoji": "🌱",
+   "emoji": "🐭⬇️",
    "japanese": "ひくい",
    "romaji": "hikui",
    "english": "short"
@@ -680,7 +683,7 @@
   },
   {
    "id": 94,
-   "emoji": "⚪",
+   "emoji": "⭕",
    "letter": "ま",
    "letterRomaji": "ma",
    "japanese": "まる",
@@ -696,7 +699,7 @@
   },
   {
    "id": 96,
-   "emoji": "🌱",
+   "emoji": "🫚",
    "japanese": "ねっこ",
    "romaji": "nekko",
    "english": "roots"
@@ -786,33 +789,35 @@
   },
   {
    "id": 108,
-   "emoji": "🌀",
+   "emoji": "",
    "letter": "こ",
    "letterRomaji": "ko",
    "japanese": "こま",
    "romaji": "koma",
-   "english": "spinning top"
+   "english": "spinning top",
+   "image": "spinning-top.png"
   },
   {
    "id": 109,
-   "emoji": "🍎🍎🍎",
+   "emoji": "🍎🍎🍎>🍎",
    "japanese": "おおい",
    "romaji": "ooi",
    "english": "more, many, much"
   },
   {
    "id": 110,
-   "emoji": "🍎",
+   "emoji": "🍎<🍎🍎🍎",
    "japanese": "すくない",
    "romaji": "sukunai",
    "english": "less, few, little"
   },
   {
    "id": 111,
-   "emoji": "🎃",
+   "emoji": "",
    "japanese": "かぼちゃ",
    "romaji": "kabocha",
-   "english": "pumpkins"
+   "english": "pumpkins",
+   "image": "pumpkin.png"
   },
   {
    "id": 112,
@@ -834,6 +839,743 @@
    "japanese": "かぼちゃのちょうちん",
    "romaji": "kabocha no chouchin",
    "english": "Jack-o-lantern"
+  },
+  {
+   "id": 115,
+   "emoji": "🐱",
+   "japanese": "ねこ、すき、きらい？",
+   "romaji": "neko, suki, kirai?",
+   "english": "Do you like cats or dislike them?"
+  },
+  {
+   "id": 116,
+   "emoji": "🥬",
+   "japanese": "やさい",
+   "romaji": "yasai",
+   "english": "vegetables"
+  },
+  {
+   "id": 117,
+   "emoji": "🍅",
+   "japanese": "とまと",
+   "romaji": "tomato",
+   "english": "tomatoes"
+  },
+  {
+   "id": 118,
+   "emoji": "🥕",
+   "japanese": "にんじん",
+   "romaji": "ninjin",
+   "english": "carrots"
+  },
+  {
+   "id": 119,
+   "emoji": "🧅",
+   "japanese": "たまねぎ",
+   "romaji": "tamanegi",
+   "english": "onions"
+  },
+  {
+   "id": 120,
+   "emoji": "🫑",
+   "japanese": "ぴーまん",
+   "romaji": "piiman",
+   "english": "peppers"
+  },
+  {
+   "id": 121,
+   "emoji": "🥒",
+   "japanese": "きゅうり",
+   "romaji": "kyuuri",
+   "english": "cucumbers"
+  },
+  {
+   "id": 122,
+   "emoji": "🥔",
+   "japanese": "じゃがいも",
+   "romaji": "jagaimo",
+   "english": "potatoes"
+  },
+  {
+   "id": 123,
+   "emoji": "🌊",
+   "japanese": "うみ",
+   "romaji": "umi",
+   "english": "ocean"
+  },
+  {
+   "id": 124,
+   "emoji": "🦈",
+   "japanese": "さめ",
+   "romaji": "same",
+   "english": "shark"
+  },
+  {
+   "id": 125,
+   "emoji": "🦀",
+   "japanese": "かに",
+   "romaji": "kani",
+   "english": "crab"
+  },
+  {
+   "id": 126,
+   "emoji": "📥",
+   "japanese": "なか",
+   "romaji": "naka",
+   "english": "in, inside"
+  },
+  {
+   "id": 127,
+   "emoji": "🏋️⚖️",
+   "japanese": "おもい",
+   "romaji": "omoi",
+   "english": "heavy"
+  },
+  {
+   "id": 128,
+   "emoji": "🪶⚖️",
+   "japanese": "かるい",
+   "romaji": "karui",
+   "english": "light"
+  },
+  {
+   "id": 1000,
+   "japanese": "あ",
+   "romaji": "a",
+   "english": "",
+   "emoji": "",
+   "letter": "あ",
+   "letterRomaji": "a"
+  },
+  {
+   "id": 1001,
+   "japanese": "い",
+   "romaji": "i",
+   "english": "",
+   "emoji": "",
+   "letter": "い",
+   "letterRomaji": "i"
+  },
+  {
+   "id": 1002,
+   "japanese": "う",
+   "romaji": "u",
+   "english": "",
+   "emoji": "",
+   "letter": "う",
+   "letterRomaji": "u"
+  },
+  {
+   "id": 1003,
+   "japanese": "え",
+   "romaji": "e",
+   "english": "",
+   "emoji": "",
+   "letter": "え",
+   "letterRomaji": "e"
+  },
+  {
+   "id": 1004,
+   "japanese": "お",
+   "romaji": "o",
+   "english": "",
+   "emoji": "",
+   "letter": "お",
+   "letterRomaji": "o"
+  },
+  {
+   "id": 1005,
+   "japanese": "か",
+   "romaji": "ka",
+   "english": "",
+   "emoji": "",
+   "letter": "か",
+   "letterRomaji": "ka"
+  },
+  {
+   "id": 1006,
+   "japanese": "き",
+   "romaji": "ki",
+   "english": "",
+   "emoji": "",
+   "letter": "き",
+   "letterRomaji": "ki"
+  },
+  {
+   "id": 1007,
+   "japanese": "く",
+   "romaji": "ku",
+   "english": "",
+   "emoji": "",
+   "letter": "く",
+   "letterRomaji": "ku"
+  },
+  {
+   "id": 1008,
+   "japanese": "け",
+   "romaji": "ke",
+   "english": "",
+   "emoji": "",
+   "letter": "け",
+   "letterRomaji": "ke"
+  },
+  {
+   "id": 1009,
+   "japanese": "こ",
+   "romaji": "ko",
+   "english": "",
+   "emoji": "",
+   "letter": "こ",
+   "letterRomaji": "ko"
+  },
+  {
+   "id": 1010,
+   "japanese": "さ",
+   "romaji": "sa",
+   "english": "",
+   "emoji": "",
+   "letter": "さ",
+   "letterRomaji": "sa"
+  },
+  {
+   "id": 1011,
+   "japanese": "し",
+   "romaji": "shi",
+   "english": "",
+   "emoji": "",
+   "letter": "し",
+   "letterRomaji": "shi"
+  },
+  {
+   "id": 1012,
+   "japanese": "す",
+   "romaji": "su",
+   "english": "",
+   "emoji": "",
+   "letter": "す",
+   "letterRomaji": "su"
+  },
+  {
+   "id": 1013,
+   "japanese": "せ",
+   "romaji": "se",
+   "english": "",
+   "emoji": "",
+   "letter": "せ",
+   "letterRomaji": "se"
+  },
+  {
+   "id": 1014,
+   "japanese": "そ",
+   "romaji": "so",
+   "english": "",
+   "emoji": "",
+   "letter": "そ",
+   "letterRomaji": "so"
+  },
+  {
+   "id": 1015,
+   "japanese": "た",
+   "romaji": "ta",
+   "english": "",
+   "emoji": "",
+   "letter": "た",
+   "letterRomaji": "ta"
+  },
+  {
+   "id": 1016,
+   "japanese": "ち",
+   "romaji": "chi",
+   "english": "",
+   "emoji": "",
+   "letter": "ち",
+   "letterRomaji": "chi"
+  },
+  {
+   "id": 1017,
+   "japanese": "つ",
+   "romaji": "tsu",
+   "english": "",
+   "emoji": "",
+   "letter": "つ",
+   "letterRomaji": "tsu"
+  },
+  {
+   "id": 1018,
+   "japanese": "て",
+   "romaji": "te",
+   "english": "",
+   "emoji": "",
+   "letter": "て",
+   "letterRomaji": "te"
+  },
+  {
+   "id": 1019,
+   "japanese": "と",
+   "romaji": "to",
+   "english": "",
+   "emoji": "",
+   "letter": "と",
+   "letterRomaji": "to"
+  },
+  {
+   "id": 1020,
+   "japanese": "な",
+   "romaji": "na",
+   "english": "",
+   "emoji": "",
+   "letter": "な",
+   "letterRomaji": "na"
+  },
+  {
+   "id": 1021,
+   "japanese": "に",
+   "romaji": "ni",
+   "english": "",
+   "emoji": "",
+   "letter": "に",
+   "letterRomaji": "ni"
+  },
+  {
+   "id": 1022,
+   "japanese": "ぬ",
+   "romaji": "nu",
+   "english": "",
+   "emoji": "",
+   "letter": "ぬ",
+   "letterRomaji": "nu"
+  },
+  {
+   "id": 1023,
+   "japanese": "ね",
+   "romaji": "ne",
+   "english": "",
+   "emoji": "",
+   "letter": "ね",
+   "letterRomaji": "ne"
+  },
+  {
+   "id": 1024,
+   "japanese": "の",
+   "romaji": "no",
+   "english": "",
+   "emoji": "",
+   "letter": "の",
+   "letterRomaji": "no"
+  },
+  {
+   "id": 1025,
+   "japanese": "は",
+   "romaji": "ha",
+   "english": "",
+   "emoji": "",
+   "letter": "は",
+   "letterRomaji": "ha"
+  },
+  {
+   "id": 1026,
+   "japanese": "ひ",
+   "romaji": "hi",
+   "english": "",
+   "emoji": "",
+   "letter": "ひ",
+   "letterRomaji": "hi"
+  },
+  {
+   "id": 1027,
+   "japanese": "ふ",
+   "romaji": "fu",
+   "english": "",
+   "emoji": "",
+   "letter": "ふ",
+   "letterRomaji": "fu"
+  },
+  {
+   "id": 1028,
+   "japanese": "へ",
+   "romaji": "he",
+   "english": "",
+   "emoji": "",
+   "letter": "へ",
+   "letterRomaji": "he"
+  },
+  {
+   "id": 1029,
+   "japanese": "ほ",
+   "romaji": "ho",
+   "english": "",
+   "emoji": "",
+   "letter": "ほ",
+   "letterRomaji": "ho"
+  },
+  {
+   "id": 1030,
+   "japanese": "ま",
+   "romaji": "ma",
+   "english": "",
+   "emoji": "",
+   "letter": "ま",
+   "letterRomaji": "ma"
+  },
+  {
+   "id": 1031,
+   "japanese": "み",
+   "romaji": "mi",
+   "english": "",
+   "emoji": "",
+   "letter": "み",
+   "letterRomaji": "mi"
+  },
+  {
+   "id": 1032,
+   "japanese": "む",
+   "romaji": "mu",
+   "english": "",
+   "emoji": "",
+   "letter": "む",
+   "letterRomaji": "mu"
+  },
+  {
+   "id": 1033,
+   "japanese": "め",
+   "romaji": "me",
+   "english": "",
+   "emoji": "",
+   "letter": "め",
+   "letterRomaji": "me"
+  },
+  {
+   "id": 1034,
+   "japanese": "も",
+   "romaji": "mo",
+   "english": "",
+   "emoji": "",
+   "letter": "も",
+   "letterRomaji": "mo"
+  },
+  {
+   "id": 1035,
+   "japanese": "や",
+   "romaji": "ya",
+   "english": "",
+   "emoji": "",
+   "letter": "や",
+   "letterRomaji": "ya"
+  },
+  {
+   "id": 1036,
+   "japanese": "ゆ",
+   "romaji": "yu",
+   "english": "",
+   "emoji": "",
+   "letter": "ゆ",
+   "letterRomaji": "yu"
+  },
+  {
+   "id": 1037,
+   "japanese": "よ",
+   "romaji": "yo",
+   "english": "",
+   "emoji": "",
+   "letter": "よ",
+   "letterRomaji": "yo"
+  },
+  {
+   "id": 1038,
+   "japanese": "ら",
+   "romaji": "ra",
+   "english": "",
+   "emoji": "",
+   "letter": "ら",
+   "letterRomaji": "ra"
+  },
+  {
+   "id": 1039,
+   "japanese": "り",
+   "romaji": "ri",
+   "english": "",
+   "emoji": "",
+   "letter": "り",
+   "letterRomaji": "ri"
+  },
+  {
+   "id": 1040,
+   "japanese": "る",
+   "romaji": "ru",
+   "english": "",
+   "emoji": "",
+   "letter": "る",
+   "letterRomaji": "ru"
+  },
+  {
+   "id": 1041,
+   "japanese": "れ",
+   "romaji": "re",
+   "english": "",
+   "emoji": "",
+   "letter": "れ",
+   "letterRomaji": "re"
+  },
+  {
+   "id": 1042,
+   "japanese": "ろ",
+   "romaji": "ro",
+   "english": "",
+   "emoji": "",
+   "letter": "ろ",
+   "letterRomaji": "ro"
+  },
+  {
+   "id": 1043,
+   "japanese": "わ",
+   "romaji": "wa",
+   "english": "",
+   "emoji": "",
+   "letter": "わ",
+   "letterRomaji": "wa"
+  },
+  {
+   "id": 1044,
+   "japanese": "を",
+   "romaji": "wo",
+   "english": "",
+   "emoji": "",
+   "letter": "を",
+   "letterRomaji": "wo"
+  },
+  {
+   "id": 1045,
+   "japanese": "ん",
+   "romaji": "n",
+   "english": "",
+   "emoji": "",
+   "letter": "ん",
+   "letterRomaji": "n"
+  },
+  {
+   "id": 1046,
+   "japanese": "が",
+   "romaji": "ga",
+   "english": "",
+   "emoji": "",
+   "letter": "が",
+   "letterRomaji": "ga"
+  },
+  {
+   "id": 1047,
+   "japanese": "ぎ",
+   "romaji": "gi",
+   "english": "",
+   "emoji": "",
+   "letter": "ぎ",
+   "letterRomaji": "gi"
+  },
+  {
+   "id": 1048,
+   "japanese": "ぐ",
+   "romaji": "gu",
+   "english": "",
+   "emoji": "",
+   "letter": "ぐ",
+   "letterRomaji": "gu"
+  },
+  {
+   "id": 1049,
+   "japanese": "げ",
+   "romaji": "ge",
+   "english": "",
+   "emoji": "",
+   "letter": "げ",
+   "letterRomaji": "ge"
+  },
+  {
+   "id": 1050,
+   "japanese": "ご",
+   "romaji": "go",
+   "english": "",
+   "emoji": "",
+   "letter": "ご",
+   "letterRomaji": "go"
+  },
+  {
+   "id": 1051,
+   "japanese": "ざ",
+   "romaji": "za",
+   "english": "",
+   "emoji": "",
+   "letter": "ざ",
+   "letterRomaji": "za"
+  },
+  {
+   "id": 1052,
+   "japanese": "じ",
+   "romaji": "ji",
+   "english": "",
+   "emoji": "",
+   "letter": "じ",
+   "letterRomaji": "ji"
+  },
+  {
+   "id": 1053,
+   "japanese": "ず",
+   "romaji": "zu",
+   "english": "",
+   "emoji": "",
+   "letter": "ず",
+   "letterRomaji": "zu"
+  },
+  {
+   "id": 1054,
+   "japanese": "ぜ",
+   "romaji": "ze",
+   "english": "",
+   "emoji": "",
+   "letter": "ぜ",
+   "letterRomaji": "ze"
+  },
+  {
+   "id": 1055,
+   "japanese": "ぞ",
+   "romaji": "zo",
+   "english": "",
+   "emoji": "",
+   "letter": "ぞ",
+   "letterRomaji": "zo"
+  },
+  {
+   "id": 1056,
+   "japanese": "だ",
+   "romaji": "da",
+   "english": "",
+   "emoji": "",
+   "letter": "だ",
+   "letterRomaji": "da"
+  },
+  {
+   "id": 1057,
+   "japanese": "ぢ",
+   "romaji": "ji",
+   "english": "",
+   "emoji": "",
+   "letter": "ぢ",
+   "letterRomaji": "ji"
+  },
+  {
+   "id": 1058,
+   "japanese": "づ",
+   "romaji": "zu",
+   "english": "",
+   "emoji": "",
+   "letter": "づ",
+   "letterRomaji": "zu"
+  },
+  {
+   "id": 1059,
+   "japanese": "で",
+   "romaji": "de",
+   "english": "",
+   "emoji": "",
+   "letter": "で",
+   "letterRomaji": "de"
+  },
+  {
+   "id": 1060,
+   "japanese": "ど",
+   "romaji": "do",
+   "english": "",
+   "emoji": "",
+   "letter": "ど",
+   "letterRomaji": "do"
+  },
+  {
+   "id": 1061,
+   "japanese": "ば",
+   "romaji": "ba",
+   "english": "",
+   "emoji": "",
+   "letter": "ば",
+   "letterRomaji": "ba"
+  },
+  {
+   "id": 1062,
+   "japanese": "び",
+   "romaji": "bi",
+   "english": "",
+   "emoji": "",
+   "letter": "び",
+   "letterRomaji": "bi"
+  },
+  {
+   "id": 1063,
+   "japanese": "ぶ",
+   "romaji": "bu",
+   "english": "",
+   "emoji": "",
+   "letter": "ぶ",
+   "letterRomaji": "bu"
+  },
+  {
+   "id": 1064,
+   "japanese": "べ",
+   "romaji": "be",
+   "english": "",
+   "emoji": "",
+   "letter": "べ",
+   "letterRomaji": "be"
+  },
+  {
+   "id": 1065,
+   "japanese": "ぼ",
+   "romaji": "bo",
+   "english": "",
+   "emoji": "",
+   "letter": "ぼ",
+   "letterRomaji": "bo"
+  },
+  {
+   "id": 1066,
+   "japanese": "ぱ",
+   "romaji": "pa",
+   "english": "",
+   "emoji": "",
+   "letter": "ぱ",
+   "letterRomaji": "pa"
+  },
+  {
+   "id": 1067,
+   "japanese": "ぴ",
+   "romaji": "pi",
+   "english": "",
+   "emoji": "",
+   "letter": "ぴ",
+   "letterRomaji": "pi"
+  },
+  {
+   "id": 1068,
+   "japanese": "ぷ",
+   "romaji": "pu",
+   "english": "",
+   "emoji": "",
+   "letter": "ぷ",
+   "letterRomaji": "pu"
+  },
+  {
+   "id": 1069,
+   "japanese": "ぺ",
+   "romaji": "pe",
+   "english": "",
+   "emoji": "",
+   "letter": "ぺ",
+   "letterRomaji": "pe"
+  },
+  {
+   "id": 1070,
+   "japanese": "ぽ",
+   "romaji": "po",
+   "english": "",
+   "emoji": "",
+   "letter": "ぽ",
+   "letterRomaji": "po"
   }
  ],
  "decks": [
@@ -954,7 +1696,21 @@
     111,
     112,
     113,
-    114
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128
    ]
   },
   {
@@ -1050,7 +1806,9 @@
     101,
     102,
     103,
-    104
+    104,
+    115,
+    126
    ]
   },
   {
@@ -1128,7 +1886,43 @@
     75,
     76,
     109,
-    110
+    110,
+    127,
+    128
+   ]
+  },
+  {
+   "title": "Vegetables",
+   "subtitle": "やさい",
+   "emoji": "🥬",
+   "color": "#6BBF4A",
+   "section": "Topics",
+   "shuffle": false,
+   "cards": [
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    111
+   ]
+  },
+  {
+   "title": "Ocean",
+   "subtitle": "うみ",
+   "emoji": "🌊",
+   "color": "#2A9DB5",
+   "section": "Topics",
+   "shuffle": false,
+   "cards": [
+    123,
+    106,
+    70,
+    124,
+    125,
+    45
    ]
   },
   {
@@ -1198,6 +1992,178 @@
     42,
     43,
     77
+   ]
+  },
+  {
+   "title": "All hiragana",
+   "subtitle": "ぜんぶ · shuffled",
+   "emoji": "あ",
+   "color": "#9B59D0",
+   "section": "Hiragana study",
+   "shuffle": true,
+   "cards": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009,
+    1010,
+    1011,
+    1012,
+    1013,
+    1014,
+    1015,
+    1016,
+    1017,
+    1018,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023,
+    1024,
+    1025,
+    1026,
+    1027,
+    1028,
+    1029,
+    1030,
+    1031,
+    1032,
+    1033,
+    1034,
+    1035,
+    1036,
+    1037,
+    1038,
+    1039,
+    1040,
+    1041,
+    1042,
+    1043,
+    1044,
+    1045,
+    1046,
+    1047,
+    1048,
+    1049,
+    1050,
+    1051,
+    1052,
+    1053,
+    1054,
+    1055,
+    1056,
+    1057,
+    1058,
+    1059,
+    1060,
+    1061,
+    1062,
+    1063,
+    1064,
+    1065,
+    1066,
+    1067,
+    1068,
+    1069,
+    1070
+   ]
+  },
+  {
+   "title": "Basic hiragana",
+   "subtitle": "あ〜ん",
+   "emoji": "あ",
+   "color": "#7B4FBF",
+   "section": "Hiragana study",
+   "shuffle": false,
+   "cards": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009,
+    1010,
+    1011,
+    1012,
+    1013,
+    1014,
+    1015,
+    1016,
+    1017,
+    1018,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023,
+    1024,
+    1025,
+    1026,
+    1027,
+    1028,
+    1029,
+    1030,
+    1031,
+    1032,
+    1033,
+    1034,
+    1035,
+    1036,
+    1037,
+    1038,
+    1039,
+    1040,
+    1041,
+    1042,
+    1043,
+    1044,
+    1045
+   ]
+  },
+  {
+   "title": "Voiced & p-sounds",
+   "subtitle": "がざだばぱ",
+   "emoji": "が",
+   "color": "#C45AB3",
+   "section": "Hiragana study",
+   "shuffle": false,
+   "cards": [
+    1046,
+    1047,
+    1048,
+    1049,
+    1050,
+    1051,
+    1052,
+    1053,
+    1054,
+    1055,
+    1056,
+    1057,
+    1058,
+    1059,
+    1060,
+    1061,
+    1062,
+    1063,
+    1064,
+    1065,
+    1066,
+    1067,
+    1068,
+    1069,
+    1070
    ]
   },
   {
@@ -1363,6 +2329,30 @@
     112,
     113,
     114
+   ]
+  },
+  {
+   "title": "Nov 13 – Vegetables, ocean & weight",
+   "subtitle": "Newsletter 2026-11-13",
+   "emoji": "🥬",
+   "color": "#1B9AAA",
+   "section": "Newsletters",
+   "shuffle": false,
+   "cards": [
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128
    ]
   }
  ]

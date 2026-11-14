@@ -1,0 +1,16 @@
+Essa Nihongo custom card pictures
+===================================
+
+acorn.png, persimmon.png, spinning-top.png, rectangle.png
+    Drawn for this project. Original artwork, not copied from another set.
+    License: may be used in the free Essa Nihongo app with no attribution
+    required. (Original work created for Bode / Essa Nihongo.)
+
+pumpkin.png
+    Derived from Google Noto Emoji U+1F383 (jack-o'-lantern,
+    2D/svg/emoji_u1f383.svg) by removing the carved face. The ribbed
+    pumpkin body and green stem are unchanged from the original.
+    Source: https://github.com/googlefonts/noto-emoji
+    License: Apache License 2.0
+    Attribution: "Noto Emoji by Google, Apache 2.0"
+    https://github.com/googlefonts/noto-emoji/blob/main/LICENSE

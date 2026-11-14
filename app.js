@@ -10,13 +10,27 @@
   const codePoints = (s) => Array.from(s).length;
   /** Font size for the big Japanese text so long phrases still fit (bigTextSp). */
   const bigTextPx = (text, max = 84, min = 30) => Math.min(max, Math.max(min, 300 / Math.max(1, codePoints(text))));
+  /** Font size for emoji strings so 🍎🍎🍎>🍎 and 📏➡️⬅️ stay on the card. */
+  const emojiTextPx = (text, letterCard = false) => {
+    const n = Math.max(1, codePoints(text));
+    const max = letterCard ? 64 : 88;
+    const min = 28;
+    let size;
+    if (n <= 2) size = max;
+    else if (n === 3) size = max * 0.72;
+    else if (n === 4) size = max * 0.56;
+    else size = max * 0.44;
+    return Math.min(max, Math.max(min, size));
+  };
 
   function makeCard(o) {
     const c = {
-      id: o.id, japanese: o.japanese, romaji: o.romaji, english: o.english,
+      id: o.id, japanese: o.japanese, romaji: o.romaji, english: o.english || '',
       emoji: o.emoji || '', letter: o.letter ?? null, letterRomaji: o.letterRomaji ?? null,
+      image: o.image || '',
     };
     c.isLetterCard = c.letter !== null;
+    c.hasImage = !!c.image;
     // What gets read aloud: the letter, then the word when they differ.
     c.speechText = (c.letter && c.letter !== c.japanese)
       ? cleanForSpeech(c.letter) + '。' + cleanForSpeech(c.japanese)
@@ -35,10 +49,46 @@
       title: o.title, subtitle: o.subtitle || '', emoji: o.emoji || '',
       color: /^#[0-9a-f]{6}$/i.test(o.color || '') ? o.color : '#4A90E2',
       section: o.section || 'Topics', shuffle: !!o.shuffle,
+      cardIds: o.cards.slice(),
       cards: o.cards.map((id) => cards.get(id)).filter(Boolean),
     }));
     return { cards, decks };
   }
+
+  // ---------- Marks (MarksStore.kt) ----------
+  const Marks = (() => {
+    const WRONG = 'essa-nihongo-wrong';
+    const RIGHT = 'essa-nihongo-right';
+    function read(key) {
+      try {
+        const raw = localStorage.getItem(key);
+        if (!raw) return new Set();
+        const arr = JSON.parse(raw);
+        return new Set((Array.isArray(arr) ? arr : []).map(Number).filter(Number.isFinite));
+      } catch (e) { return new Set(); }
+    }
+    function write(key, set) { localStorage.setItem(key, JSON.stringify([...set].sort((a, b) => a - b))); }
+    function wrongIds() { return read(WRONG); }
+    function isWrong(id) { return read(WRONG).has(id); }
+    function isRight(id) { return read(RIGHT).has(id); }
+    function markRight(id) {
+      const w = read(WRONG); const r = read(RIGHT);
+      w.delete(id);
+      if (r.has(id)) r.delete(id); else r.add(id);
+      write(WRONG, w); write(RIGHT, r);
+    }
+    function markWrong(id) {
+      const w = read(WRONG); const r = read(RIGHT);
+      r.delete(id);
+      if (w.has(id)) w.delete(id); else w.add(id);
+      write(WRONG, w); write(RIGHT, r);
+    }
+    function missedCount(ids) {
+      const w = read(WRONG);
+      return ids.filter((id) => w.has(id)).length;
+    }
+    return { wrongIds, isWrong, isRight, markRight, markWrong, missedCount };
+  })();
 
   // ---------- Toast ----------
   let toastTimer = 0;
@@ -62,7 +112,6 @@
       if (!voices.length) return;
       voicesLoaded = true;
       const ja = voices.filter((v) => /^ja([-_]|$)/i.test(v.lang));
-      // Prefer ja-JP, then a local (offline) voice, then a friendly default like Kyoko/O-Ren.
       ja.sort((a, b) => score(b) - score(a));
       voice = ja[0] || null;
     }
@@ -104,7 +153,7 @@
       const u = new SpeechSynthesisUtterance(text);
       u.lang = 'ja-JP';
       if (voice) { try { u.voice = voice; } catch (e) { /* lang alone still picks Japanese */ } }
-      u.rate = 0.8;   // a little slower, like the Android app
+      u.rate = 0.8;
       u.pitch = 1;
       u.onerror = (e) => {
         if (e && (e.error === 'language-unavailable' || e.error === 'voice-unavailable' || e.error === 'synthesis-unavailable')) explainMissing();
@@ -112,11 +161,9 @@
       let started = false;
       u.onstart = () => { started = true; };
       synth.speak(u);
-      // If nothing starts (no voices at all on this device), explain how to add one.
       setTimeout(() => {
         if (!started && !synth.speaking && !(synth.getVoices() || []).length) explainMissing();
       }, 1500);
-      // Some Safari versions pause the queue after cancel(); nudge it.
       if (synth.paused) synth.resume();
     }
     function stop() { if (synth) synth.cancel(); }
@@ -124,7 +171,8 @@
   })();
 
   // ---------- Home (MainActivity.kt) ----------
-  const SECTION_NAMES = { Topics: 'Topics', Newsletters: 'By newsletter' };
+  const SECTION_NAMES = { Topics: 'Topics', Newsletters: 'By newsletter', 'Hiragana study': 'Hiragana study' };
+  const MISSED_COLOR = '#E85D5D';
 
   function renderHome() {
     const list = $('deck-list');
@@ -140,29 +188,59 @@
           list.appendChild(h);
         }
       }
-      const n = deck.cards.length;
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'deck-tile';
-      b.style.setProperty('--c', deck.color);
-      b.dataset.deck = String(i);
-      b.setAttribute('aria-label', `${deck.title}, ${n} cards`);
-      b.innerHTML =
-        '<span class="deck-emoji" aria-hidden="true"></span>' +
-        '<span class="deck-texts"><div class="deck-name"></div><div class="deck-sub"></div></span>' +
-        '<span class="deck-arrow" aria-hidden="true">▶</span>';
-      b.querySelector('.deck-emoji').textContent = deck.emoji;
-      b.querySelector('.deck-name').textContent = deck.title;
-      const sub = b.querySelector('.deck-sub');
-      sub.textContent = `${deck.subtitle}  ·  ${n} cards`;
-      if (/[\u3040-\u30ff]/.test(deck.subtitle)) sub.lang = 'ja';
-      b.addEventListener('click', () => { cameFromHome = true; location.hash = '#deck=' + i; });
-      list.appendChild(b);
+      list.appendChild(deckButton(deck, i, false));
+      if (deck.section === 'All') list.appendChild(missedButton());
     });
   }
 
+  function missedButton() {
+    const ids = [...Marks.wrongIds()].filter((id) => vocab.cards.has(id));
+    const deck = {
+      title: 'Practice missed words',
+      subtitle: 'まちがえたことば',
+      emoji: '✗',
+      color: MISSED_COLOR,
+    };
+    return deckButton(deck, 'missed', true, ids.length);
+  }
+
+  function deckButton(deck, key, missedMode, missedOverride) {
+    const n = missedMode ? missedOverride : deck.cards.length;
+    const missed = missedMode ? n : Marks.missedCount(deck.cardIds);
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'deck-tile';
+    b.style.setProperty('--c', deck.color);
+    b.dataset.deck = String(key);
+    const missedBit = (!missedMode && missed > 0) ? `, ${missed} missed` : '';
+    b.setAttribute('aria-label', `${deck.title}, ${n} cards${missedBit}`);
+    b.innerHTML =
+      '<span class="deck-emoji" aria-hidden="true"></span>' +
+      '<span class="deck-texts"><div class="deck-name"></div><div class="deck-sub"></div></span>' +
+      '<span class="deck-arrow" aria-hidden="true">▶</span>';
+    b.querySelector('.deck-emoji').textContent = deck.emoji;
+    b.querySelector('.deck-name').textContent = deck.title;
+    const sub = b.querySelector('.deck-sub');
+    if (missedMode) {
+      sub.textContent = n === 0 ? `${deck.subtitle}  ·  none yet` : `${deck.subtitle}  ·  ${n} cards`;
+    } else {
+      const extra = missed > 0 ? `  ·  ${missed} missed` : '';
+      sub.textContent = `${deck.subtitle}  ·  ${n} cards${extra}`;
+    }
+    if (/[\u3040-\u30ff]/.test(deck.subtitle)) sub.lang = 'ja';
+    b.addEventListener('click', () => {
+      if (missedMode && n === 0) {
+        toast('No missed words yet. Mark a card with ✗ while studying.');
+        return;
+      }
+      cameFromHome = true;
+      location.hash = missedMode ? '#deck=missed' : '#deck=' + key;
+    });
+    return b;
+  }
+
   // ---------- Study (CardActivity.kt) ----------
-  const S = { deck: null, order: [], index: 0, back: false, animating: false };
+  const S = { deck: null, order: [], index: 0, back: false, animating: false, missed: false };
 
   function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
@@ -172,11 +250,22 @@
     return a;
   }
   const current = () => S.deck.cards[S.order[S.index]];
-  // Big text scales down on short screens so everything fits (full size at 700px+ tall).
   const fit = (px) => `min(${px}px, ${(px / 7).toFixed(2)}vh)`;
 
-  function openDeck(i) {
-    const deck = vocab.decks[i];
+  function openDeck(key) {
+    let deck;
+    if (key === 'missed') {
+      const cards = [...Marks.wrongIds()].map((id) => vocab.cards.get(id)).filter(Boolean);
+      if (!cards.length) { toast('No missed words yet. Mark a card with ✗ while studying.'); showHome(); return; }
+      deck = {
+        title: 'Practice missed words', emoji: '✗', color: MISSED_COLOR,
+        shuffle: true, cards, cardIds: cards.map((c) => c.id),
+      };
+      S.missed = true;
+    } else {
+      deck = vocab.decks[key];
+      S.missed = false;
+    }
     if (!deck || !deck.cards.length) { showHome(); return; }
     S.deck = deck;
     S.order = deck.cards.map((_, k) => k);
@@ -196,16 +285,43 @@
   function showHome() {
     Speaker.stop();
     S.deck = null;
+    S.missed = false;
     $('study').hidden = true;
     $('home').hidden = false;
     document.title = 'Essa Nihongo';
+    if (vocab) renderHome();
+  }
+
+  function showPicture(c) {
+    const fe = $('front-emoji'), fi = $('front-image'), bi = $('back-image');
+    if (c.hasImage) {
+      fe.hidden = true;
+      fe.textContent = '';
+      fi.hidden = false;
+      fi.src = 'images/' + c.image;
+      fi.alt = c.english || c.japanese;
+      bi.hidden = false;
+      bi.src = 'images/' + c.image;
+      bi.alt = c.english || c.japanese;
+    } else {
+      fi.hidden = true; fi.removeAttribute('src');
+      bi.hidden = true; bi.removeAttribute('src');
+      if (!c.emoji.trim()) {
+        fe.hidden = true;
+        fe.textContent = '';
+      } else {
+        fe.hidden = false;
+        fe.textContent = c.emoji;
+        fe.style.fontSize = fit(emojiTextPx(c.emoji, c.isLetterCard));
+      }
+    }
   }
 
   function bindCard() {
     const c = current();
     const n = S.deck.cards.length;
     $('counter').textContent = `${S.index + 1} / ${n}`;
-    const fl = $('front-letter'), fw = $('front-word'), fe = $('front-emoji');
+    const fl = $('front-letter'), fw = $('front-word');
     if (c.isLetterCard) {
       fl.hidden = false;
       fl.textContent = c.letter;
@@ -222,22 +338,64 @@
       fw.style.fontSize = fit(bigTextPx(c.japanese));
       fw.style.color = '';
     }
-    fe.textContent = c.emoji;
-    fe.hidden = !c.emoji.trim();
-    fe.style.fontSize = fit(c.isLetterCard ? 64 : 88);
+    showPicture(c);
 
     const jp = (c.isLetterCard && c.letter !== c.japanese) ? `${c.letter} → ${c.japanese}` : c.japanese;
-    $('back-japanese').textContent = [c.emoji, jp].filter((s) => s.trim()).join('  ');
+    const prefix = (!c.hasImage && c.emoji.trim()) ? c.emoji + '  ' : '';
+    $('back-japanese').textContent = prefix + jp;
     $('back-romaji').textContent = c.romajiLine;
-    $('back-english').textContent = c.english;
+    const be = $('back-english');
+    if (!c.english || c.english === c.romaji) {
+      be.hidden = true;
+      be.textContent = '';
+    } else {
+      be.hidden = false;
+      be.textContent = c.english;
+    }
+    refreshMarks();
     showFace();
   }
   function showFace() {
     $('front').hidden = S.back;
     $('back').hidden = !S.back;
     $('card').setAttribute('aria-label',
-      S.back ? `${current().romajiLine}: ${current().english}. Tap to flip back.`
+      S.back ? `${current().romajiLine}: ${current().english || current().romajiLine}. Tap to flip back.`
              : `Flashcard ${current().japanese}. Tap to flip, swipe for the next card.`);
+  }
+
+  function refreshMarks() {
+    const id = current().id;
+    $('wrong-btn').classList.toggle('on', Marks.isWrong(id));
+    $('right-btn').classList.toggle('on', Marks.isRight(id));
+  }
+
+  function onMarkRight() {
+    if (!S.deck) return;
+    const id = current().id;
+    Marks.markRight(id);
+    refreshMarks();
+    if (S.missed && !Marks.isWrong(id)) dropCurrentFromMissed();
+  }
+  function onMarkWrong() {
+    if (!S.deck) return;
+    Marks.markWrong(current().id);
+    refreshMarks();
+  }
+
+  function dropCurrentFromMissed() {
+    const removedPos = S.order[S.index];
+    S.deck.cards.splice(removedPos, 1);
+    if (!S.deck.cards.length) {
+      toast('🎉 No more missed words!');
+      goHome();
+      return;
+    }
+    S.order = S.order
+      .filter((pos) => pos !== removedPos)
+      .map((pos) => (pos > removedPos ? pos - 1 : pos));
+    if (S.index >= S.order.length) S.index = 0;
+    S.back = false;
+    bindCard();
   }
 
   function anim(el, frames, ms) {
@@ -292,7 +450,6 @@
 
   const speakCurrent = () => { if (S.deck) Speaker.speak(current().speechText); };
 
-  // Tap to flip, swipe left/right to move (GestureDetector equivalent).
   function attachGestures(el) {
     let sx = 0, sy = 0, st = 0, id = null;
     el.addEventListener('pointerdown', (e) => {
@@ -313,11 +470,13 @@
     el.addEventListener('contextmenu', (e) => e.preventDefault());
   }
 
-  // ---------- Routing (#deck=N), so the phone's back gesture returns home ----------
+  // ---------- Routing (#deck=N or #deck=missed) ----------
   function route() {
     if (!vocab) return;
+    const missed = location.hash === '#deck=missed';
     const m = /^#deck=(\d+)$/.exec(location.hash);
-    if (m) openDeck(parseInt(m[1], 10));
+    if (missed) openDeck('missed');
+    else if (m) openDeck(parseInt(m[1], 10));
     else showHome();
   }
   let cameFromHome = false;
@@ -332,6 +491,8 @@
     $('prev-btn').addEventListener('click', () => move(-1));
     $('next-btn').addEventListener('click', () => move(1));
     $('speak-btn').addEventListener('click', speakCurrent);
+    $('wrong-btn').addEventListener('click', onMarkWrong);
+    $('right-btn').addEventListener('click', onMarkRight);
     attachGestures($('card'));
     document.addEventListener('keydown', (e) => {
       if ($('study').hidden || e.metaKey || e.ctrlKey || e.altKey) return;
@@ -340,7 +501,6 @@
       else if (e.key === 'Escape') goHome();
       else if (e.key === 's' || e.key === 'S') speakCurrent();
     });
-    // Block iOS double-tap zoom / pinch on the study screen.
     document.addEventListener('dblclick', (e) => e.preventDefault(), { passive: false });
     document.addEventListener('gesturestart', (e) => e.preventDefault(), { passive: false });
     window.addEventListener('hashchange', () => { if (!/^#deck=/.test(location.hash)) cameFromHome = false; route(); });

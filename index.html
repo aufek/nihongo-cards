@@ -40,15 +40,22 @@
       <div id="front" class="face front">
         <div id="front-letter" class="front-letter" lang="ja"></div>
         <div id="front-emoji" class="front-emoji" aria-hidden="true"></div>
+        <img id="front-image" class="front-image" alt="" hidden>
         <div id="front-word" class="front-word" lang="ja"></div>
         <div class="hint">tap to flip 👆</div>
       </div>
       <div id="back" class="face back" hidden>
+        <img id="back-image" class="back-image" alt="" hidden>
         <div id="back-japanese" class="back-japanese" lang="ja"></div>
         <div id="back-romaji" class="back-romaji"></div>
         <div id="back-english" class="back-english"></div>
       </div>
     </div>
+  </div>
+
+  <div class="marks">
+    <button id="wrong-btn" class="mark-btn wrong" type="button" aria-label="I missed this">✗</button>
+    <button id="right-btn" class="mark-btn right" type="button" aria-label="I got it right">✓</button>
   </div>
 
   <nav class="controls">

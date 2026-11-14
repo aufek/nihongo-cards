@@ -92,12 +92,27 @@ button:focus-visible, .card:focus-visible, .deck-tile:focus-visible {
 .back { padding: 16px 20px; }
 .front-letter, .front-word, .back-romaji, .back-english { font-weight: 800; line-height: 1.15; }
 .front-word, .back-english, .back-japanese { overflow-wrap: anywhere; }
-.front-emoji { line-height: 1.15; }
+.front-emoji { line-height: 1.15; white-space: nowrap; max-width: 100%; }
+.front-image { width: min(160px, 36vh); height: min(160px, 36vh); object-fit: contain; }
+.back-image { width: min(88px, 16vh); height: min(88px, 16vh); object-fit: contain; margin-bottom: 8px; }
 .hint { padding-top: 18px; font-size: 15px; color: var(--faint); }
 .back-japanese { font-size: min(34px, 5vh); }
 .back-romaji { font-size: min(36px, 5.4vh); color: var(--deck); padding: 14px 0 10px; }
 .back-english { font-size: min(32px, 4.8vh); }
 
+.marks { display: flex; gap: 16px; margin: 0 0 12px; }
+.mark-btn {
+  flex: 1; height: 64px; border-radius: 22px;
+  border: 3px solid currentColor; background: #fff;
+  font-size: 32px; line-height: 1; font-weight: 800;
+  box-shadow: 0 2px 5px rgba(0,0,0,.12);
+}
+.mark-btn.wrong { color: #E0454C; }
+.mark-btn.right { color: #2E9E5B; }
+.mark-btn.on { color: #fff; }
+.mark-btn.wrong.on { background: #E0454C; border-color: #E0454C; }
+.mark-btn.right.on { background: #2E9E5B; border-color: #2E9E5B; }
+.mark-btn:active { transform: scale(.96); }
 .controls { display: flex; gap: 12px; }
 .big-btn {
   flex: 1; height: 84px; border-radius: 26px;

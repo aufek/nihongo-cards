@@ -6,6 +6,7 @@ for the offline service worker; plain `file://` opens but won't work offline).
 
 - `index.html`, `style.css`, `app.js` – the app (home deck list + flashcards)
 - `decks.json` – same card data as the Android app (`app/src/main/assets/decks.json`)
+- `images/` – custom card pictures (acorn, persimmon, spinning top, pumpkin, rectangle)
 - `manifest.webmanifest`, `sw.js` – install + offline support (bump `VERSION` in sw.js after edits)
 - `icons/` – 180px apple-touch-icon, 192/512 icons, maskable 512, favicon
 

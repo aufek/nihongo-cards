@@ -1,9 +1,11 @@
 // Offline support: keep the whole app in a cache. Bump VERSION when files change.
-const VERSION = 'essa-nihongo-v1';
+const VERSION = 'essa-nihongo-v2';
 const FILES = [
   './', './index.html', './style.css', './app.js', './decks.json', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',
   './icons/apple-touch-icon-180.png', './icons/favicon-64.png',
+  './images/acorn.png', './images/persimmon.png', './images/spinning-top.png',
+  './images/pumpkin.png', './images/rectangle.png',
 ];
 
 self.addEventListener('install', (e) => {
